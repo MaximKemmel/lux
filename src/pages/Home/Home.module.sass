@@ -1,11 +1,19 @@
 $face_text_color: #FFFFFF
 $overlay_color: #0000001A
+$text_color: #000000
+$description_color: #999999
+$theme_color: #F5F6F7
+$theme_active_color: #BBA78A
+$theme_hover_color: #EEEFF0
+$theme_description_text_color: #999999
+$tag_color: #ffffffd0
 
 .wrapper
     display: flex
     flex-direction: column
     justify-content: center
     width: 100vw
+    gap: 50px
 
     .face
         display: flex
@@ -83,3 +91,173 @@ $overlay_color: #0000001A
                         font-weight: 20px
                         font-family: 'NeueHaasThin'
                         opacity: .9
+
+    .wrapper_container
+        padding: 40px
+        display: flex
+        flex-direction: column
+        gap: 32px
+
+        .title
+            font-size: 64px
+            line-height: 64px
+            color: $text_color
+            font-family: 'NeueHaasRoman'
+            display: flex
+            flex-direction: column
+            gap: 16px
+
+            .description
+                font-size: 16px
+                color: $description_color
+
+    .themes
+        .title
+            width: 715px
+
+        .themes_container
+            display: flex
+            gap: 6px
+            height: 750px
+
+            .themes_list
+                display: flex
+                flex-direction: column
+                flex-grow: 1
+                height: 100%
+
+                .theme
+                    padding: 0px 22px
+                    width: calc(100% - 44px)
+                    height: 20%
+                    background-color: $theme_color
+                    display: flex
+                    gap: 16px
+                    align-items: center
+                    cursor: pointer
+                    transition: all .2s ease-out
+
+                    &.active
+                        background-color: $theme_active_color
+
+                        .content
+                            .name,
+                            .description
+                                color: $face_text_color
+
+                    img
+                        height: 110px
+                        aspect-ratio: 1
+                        border-radius: 55px
+
+                    .content
+                        display: flex
+                        flex-direction: column
+                        gap: 5px
+                        font-family: 'NeueHaasRoman'
+
+                        .name
+                            font-size: 32px
+                            line-height: 42px
+                            color: $text_color
+
+                        .description
+                            font-size: 16px
+                            color: $theme_description_text_color
+
+            .slider_wrapper
+                display: flex
+                width: 1200px
+
+    .complexes
+        margin: 50px 0
+
+        .title
+            width: 1300px
+
+        .complexes_list
+            display: flex
+            flex-wrap: wrap
+            gap: 8px
+            justify-content: space-between
+
+            .complex
+                display: flex
+                height: calc(100vw / 2.85)
+                background-position: center
+                background-repeat: no-repeat
+                transition: all .35s ease-out
+
+                &.small
+                    width: 33%
+                    background-image: url("../../assets/images/rooftop.jpg")
+                    background-size: auto 140%
+
+                &.medium
+                    width: calc(67% - 8px)
+                    background-image: url("../../assets/images/meeting_room.jpg")
+                    background-size: 100% auto
+                    background-position-y: bottom
+
+                &.big
+                    width: 100%
+                    background-image: url("../../assets/images/spa.png")
+                    background-size: 100% auto
+
+                .content
+                    display: flex
+                    flex-direction: column
+                    justify-content: space-between
+                    padding: 32px
+                    width: calc(100% - 64px)
+                    height: calc(100% - 64px)
+
+                    .main_info
+                        display: flex
+                        flex-direction: column
+                        gap: 12px
+
+                        .tags_list
+                            display: flex
+                            flex-wrap: wrap
+                            gap: 6px
+
+                            .tag
+                                display: flex
+                                padding: 8px 16px
+                                border-radius: 34px
+                                border: 1.5px solid $tag_color
+                                font-size: 16px
+                                font-family: 'Inter', sans-serif
+                                font-weight: 300
+                                color: $tag_color
+
+                        .name
+                            font-size: 64px
+                            font-family: 'NeueHaasRoman'
+                            color: $face_text_color
+
+@media (hover: hover)
+    .wrapper
+        .themes
+            .themes_container
+                .themes_list
+                    .theme
+                        &:hover
+                            background-color: $theme_hover_color
+
+                            &.active
+                                background-color: $theme_active_color
+
+        .complexes
+            .complexes_list
+                .complex
+                    &:hover
+                        &.small
+                            background-size: auto calc(140% + 30px)
+
+                        &.medium
+                            background-size: calc(100% + 30px) auto
+
+                        &.big
+                            background-size: calc(100% + 30px) auto

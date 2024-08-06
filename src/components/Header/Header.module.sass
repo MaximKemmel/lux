@@ -1,4 +1,10 @@
-$text_color: #FFFFFFBF
+$link_color: #FFFFFFBF
+$text_color: #FFFFFF
+$selector_color: #FFFFFF00
+$selector_hover_color: #FFFFFF4D
+$language_color: #BBA78A
+$language_hover_color: #DCDDDE
+$language_text_color: #000000
 
 .container
     display: flex
@@ -27,7 +33,7 @@ $text_color: #FFFFFFBF
 
             a
                 text-decoration: none
-                color: $text_color
+                color: $link_color
                 font-family: "Inter", sans-serif
                 font-weight: 300
                 font-size: 16px
@@ -40,3 +46,75 @@ $text_color: #FFFFFFBF
         button
             height: 39px
             width: 93px
+
+        .language_selector
+            position: relative
+            font-family: 'NeueHaasRoman'
+            font-size: 18px
+            color: $text_color
+
+            img
+                width: 18px
+                height: 13px
+
+            .language
+                display: flex
+                align-items: center
+                justify-content: center
+                background-color: $selector_color
+                gap: 4px
+                cursor: pointer
+                width: 67px
+                height: 40px
+                transition: all .2s ease-out
+
+            .languages_list
+                position: absolute
+                z-index: 11
+                display: flex
+                flex-direction: column
+                background-color: $text_color
+                padding: 0 4px
+                gap: 0
+                right: 0
+                top: 48px
+                max-height: 0
+                width: 140px
+                transition: all .2s ease-out
+                overflow: hidden
+
+                &.active
+                    gap: 4px
+                    padding: 4px
+                    max-height: 500px
+
+                .language
+                    padding: 0 6px
+                    width: calc(100% - 12px)
+                    height: 40px
+                    display: flex
+                    align-items: center
+                    justify-content: start
+                    gap: 4px
+                    cursor: pointer
+                    color: $language_text_color
+
+                    &.active
+                        background-color: $language_color
+                        color: $text_color
+
+@media (hover: hover)
+    .container
+        .actions
+            .language_selector
+                .language
+                    &:hover
+                        background-color: $selector_hover_color
+
+                .languages_list
+                    .language
+                        &:hover
+                            background-color: $language_hover_color
+
+                            &.active
+                                background-color: $language_color

@@ -1,0 +1,137 @@
+$text_color: #000000
+$secondary_text_color: #999999
+$item_hover_color: #BBA78A
+$social_background: #F5F6F7
+$bottom_border_color: #EDEDED
+
+.container
+    display: flex
+    flex-direction: column
+    gap: 32px
+    font-family: 'NeueHaasRoman'
+    width: 100%
+
+    .main_info
+        display: flex
+        align-items: start
+        justify-content: space-between
+        width: 100%
+
+        .title
+            font-size: 16px
+            color: $secondary_text_color
+
+        .logo
+            display: flex
+            width: 25%
+
+            img
+                height: 87px
+                width: auto
+
+        .general
+            display: flex
+            width: 38%
+            flex-direction: column
+            gap: 8px
+
+            .items
+                display: flex
+                flex-direction: column
+                gap: 8px
+
+                .item
+                    display: flex
+                    gap: 12px
+                    align-items: center
+                    font-size: 50px
+
+                    img
+                        height: 48px
+                        aspect-ratio: 1
+
+        .themes_services
+            display: flex
+            width: 38%
+            flex-direction: column
+            gap: 24px
+
+            .themes
+                display: flex
+                flex-direction: column
+                gap: 8px
+
+            .items
+                display: flex
+                flex-wrap: wrap
+                font-size: 32px
+                white-space: pre-wrap
+
+                .item
+                    cursor: pointer
+                    color: $text_color
+                    transition: all .2s ease-out
+
+    .socials
+        display: flex
+
+        .empty
+            display: flex
+            height: 5px
+            width: 25%
+
+        .socials_list
+            display: flex
+            width: 73%
+            gap: 12px
+
+            .social
+                display: flex
+                flex-direction: column
+                align-items: center
+                justify-content: center
+                gap: 12px
+                background-color: $social_background
+                height: 186px
+                border-radius: 98px
+                aspect-ratio: 1
+                font-size: 16px
+                text-align: center
+
+                img
+                    height: 48px
+                    width: 48px
+
+    .bottom
+        display: flex
+        align-items: center
+        width: 100%
+        border-top: 1px solid $bottom_border_color
+        padding-top: 20px
+
+        .designer
+            display: flex
+            width: 25%
+
+            img
+                width: 173px
+                height: auto
+
+        .links
+            width: 73%
+            display: flex
+            gap: 40px
+
+            .link
+                font-size: 16px
+                color: $secondary_text_color
+                cursor: pointer
+
+@media (hover: hover)
+    .container
+        .main_info
+            .themes_services
+                .items
+                    .item
+                        &:hover
+                            color: $item_hover_color

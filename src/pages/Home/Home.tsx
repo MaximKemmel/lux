@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import styles from "./Home.module.sass";
 
@@ -17,6 +17,11 @@ import ØsterdalenImage from "../../assets/images/Østerdalen.png";
 
 const HomePage = () => {
   const [selectedTheme, setSelectedTheme] = useState(0);
+
+  useEffect(() => {
+    document.title = "LUX";
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
 
   return (
     <div className={styles.wrapper}>

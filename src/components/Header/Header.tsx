@@ -1,14 +1,17 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import globalStyles from "../../App.module.sass";
 import styles from "./Header.module.sass";
 
 import Logo from "../../assets/images/logo.png";
+import BlackLogo from "../../assets/images/footer_logo.png";
 import EngIcon from "../../assets/images/eng.png";
 import NorIcon from "../../assets/images/nor.png";
 
 const Header = () => {
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
   const [isLanguageSelectorActive, setIsLanguageSelectorActive] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState("En");
 
@@ -18,10 +21,10 @@ const Header = () => {
 
   return (
     <header>
-      <div className={styles.container}>
+      <div className={`${styles.container} ${pathname === "/terms" || pathname === "/privacy_policy" ? styles.dark : ""}`}>
         <div className={styles.navigation}>
-          <div className={styles.logo}>
-            <img src={Logo} alt="" />
+          <div className={styles.logo} onClick={() => navigate("/")}>
+            <img src={pathname === "/terms" || pathname === "/privacy_policy" ? BlackLogo : Logo} alt="" />
           </div>
           <nav className={styles.links}>
             <Link to="">About apartment</Link>
@@ -55,7 +58,10 @@ const Header = () => {
               </div>
             </div>
           </div>
-          <button type="button">
+          <button
+            type="button"
+            className={pathname === "/terms" || pathname === "/privacy_policy" ? globalStyles.secondary : ""}
+          >
             <div className={globalStyles.content}>Book</div>
           </button>
         </div>

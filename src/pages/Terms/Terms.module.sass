@@ -1,0 +1,96 @@
+$text_color: #000000
+$subtitle_color: #000000E5
+$theme_point_color: #BBA78A
+$item_color: #0000008C
+$term_border_color: #E9E9EB
+
+.wrapper
+    display: flex
+    width: 100vw
+    padding-top: 75px
+    font-family: 'NeueHaasRoman'
+
+    .content
+        display: flex
+        gap: 80px
+        flex-direction: column
+        width: calc(100% - 80px)
+        padding: 80px 40px
+        color: $text_color
+
+        .title
+            font-size: 108px
+            line-height: 92px
+
+        .terms_list
+            display: flex
+            flex-direction: column
+
+            .term
+                display: flex
+                align-items: start
+                padding: 21px 0
+                border-bottom: 1px solid $term_border_color
+
+                .theme
+                    display: flex
+                    flex-shrink: 0
+                    align-items: start
+                    gap: 8px
+                    width: 35%
+                    font-size: 20px
+                    line-height: 20px
+                    color: $subtitle_color
+
+                    .point
+                        color: $theme_point_color
+                        font-size: 17px
+
+                .description
+                    display: flex
+                    flex-grow: 1
+                    flex-direction: column
+                    gap: 32px
+
+                    .title
+                        font-size: 50px
+                        line-height: 50px
+
+                    .subtitle
+                        font-size: 20px
+                        line-height: 20px
+                        color: $subtitle_color
+
+                    .subtitle_empty
+                        height: 0
+                        margin-top: -18px
+
+                    .items_list
+                        display: flex
+                        flex-direction: column
+                        gap: 14px
+                        margin-top: -14px
+
+                        .item
+                            display: flex
+                            align-items: start
+                            gap: 8px
+                            color: $item_color
+                            font-size: 16px
+                            line-height: 21px
+                            font-family: "Inter", sans-serif
+                            font-weight: 400
+
+                            .point
+                                color: $text_color
+                                font-size: 14px
+
+                    .thanks
+                        font-size: 32px
+                        line-height: 32px
+
+                    button
+                        margin-top: -8px
+                        margin-bottom: 8px
+                        height: 50px
+                        width: 174px

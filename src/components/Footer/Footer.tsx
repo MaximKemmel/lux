@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 import styles from "./Footer.module.sass";
 
 import Logo from "../../assets/images/footer_logo.png";
@@ -9,6 +11,8 @@ import InstagramIcon from "../../assets/images/instagram.png";
 import DesignerIcon from "../../assets/images/designer.png";
 
 const Footer = () => {
+  const navigate = useNavigate();
+
   return (
     <footer>
       <div className={styles.container}>
@@ -82,8 +86,12 @@ const Footer = () => {
             <img src={DesignerIcon} alt="" />
           </div>
           <div className={styles.links}>
-            <div className={styles.link}>Terms @ Conditions</div>
-            <div className={styles.link}>Privacy policy</div>
+            <div className={styles.link} onClick={() => navigate("/terms")}>
+              Terms @ Conditions
+            </div>
+            <div className={styles.link} onClick={() => navigate("/privacy_policy ")}>
+              Privacy policy
+            </div>
           </div>
         </div>
       </div>

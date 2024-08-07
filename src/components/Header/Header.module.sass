@@ -4,7 +4,7 @@ $selector_color: #FFFFFF00
 $selector_hover_color: #FFFFFF4D
 $language_color: #BBA78A
 $language_hover_color: #DCDDDE
-$language_text_color: #000000
+$secondary_text_color: #000000
 
 .container
     display: flex
@@ -22,6 +22,7 @@ $language_text_color: #000000
         .logo
             height: 38px
             width: 102px
+            cursor: pointer
 
             img
                 width: 100%
@@ -97,11 +98,21 @@ $language_text_color: #000000
                     justify-content: start
                     gap: 4px
                     cursor: pointer
-                    color: $language_text_color
+                    color: $secondary_text_color
 
                     &.active
                         background-color: $language_color
                         color: $text_color
+
+    &.dark
+        .navigation
+            .links
+                a
+                    color: $secondary_text_color
+
+        .actions
+            .language_selector
+                color: $secondary_text_color
 
 @media (hover: hover)
     .container

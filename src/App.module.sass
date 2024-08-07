@@ -3,7 +3,15 @@ $main_color: #FFFFFF
 $button_text_color: #000000
 $button_border_color: #FFFFFF66
 $button_hover_color: #DCDDDE
+$button_hover_border_color: #DCDDDE66
 $button_active_color: #B9B9BA
+$button_active_border_color: #B9B9BA66
+$button_secondary_color: #BBA78A
+$button_secondary_border_color: #BBA78A66
+$button_secondary_hover_color: #94846D
+$button_secondary_hover_border_color: #94846D66
+$button_secondary_active_color: #7A6D5A
+$button_secondary_active_border_color: #7A6D5A66
 
 @font-face
     font-family: "NeueHaasRoman"
@@ -25,6 +33,7 @@ body
     padding: 0
     overflow-y: auto
     overflow-x: hidden
+    background-color: $main_color
 
 .wrapper
     display: flex
@@ -63,11 +72,35 @@ button
         transition: all .2s ease-out
 
     &:active
+        border: 1.5px solid $button_active_border_color
+
         .content
             background-color: $button_active_color
+
+    &.secondary
+        color: $main_color
+        border: 1.5px solid $button_secondary_border_color
+
+        .content
+            background-color: $button_secondary_color
+
+        &:active
+            border: 1.5px solid $button_secondary_active_border_color
+
+            .content
+                background-color: $button_secondary_active_color
 
 @media (hover: hover)
     button
         &:hover
+            border: 1.5px solid $button_hover_border_color
+
             .content
                 background-color: $button_hover_color
+
+        &.secondary
+            &:hover
+                border: 1.5px solid $button_secondary_hover_border_color
+
+                .content
+                    background-color: $button_secondary_hover_color

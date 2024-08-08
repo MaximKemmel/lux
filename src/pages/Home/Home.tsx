@@ -301,7 +301,7 @@ const HomePage = () => {
               {Array(6)
                 .fill(1)
                 .map(() => (
-                  <img src={SliderImage} alt="" />
+                  <img className={styles.image} src={SliderImage} alt="" />
                 ))}
             </Slider>
             <div className={styles.actions}>
@@ -309,13 +309,13 @@ const HomePage = () => {
                 className={`${styles.action} ${currentIndex !== 0 ? styles.active : ""}`}
                 onClick={() => slider?.current?.slickPrev()}
               >
-                <img src={ArrowLeftIcon} alt="" />
+                <img className={styles.arrow} src={ArrowLeftIcon} alt="" />
               </div>
               <div
                 className={`${styles.action} ${currentIndex !== 5 ? styles.active : ""}`}
                 onClick={() => slider?.current?.slickNext()}
               >
-                <img src={ArrowRightIcon} alt="" />
+                <img className={styles.arrow} src={ArrowRightIcon} alt="" />
               </div>
             </div>
             <div className={styles.pagination}>
@@ -330,6 +330,9 @@ const HomePage = () => {
             </div>
           </div>
         </div>
+        <button type="button" className={globalStyles.secondary} onClick={() => navigate("/apartaments")}>
+          <div className={globalStyles.content}>Read about apartments</div>
+        </button>
       </div>
       <div className={`${styles.wrapper_container} ${styles.services}`}>
         <div className={styles.title}>

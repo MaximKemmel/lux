@@ -186,6 +186,41 @@ $line_color: #EDEDED
             line-height: 21px
             color: $label_text_color
 
+    .gallery
+        margin-bottom: 50px
+        height: 40vw
+        align-items: center
+        position: relative
+        padding-right: 0
+        width: calc(100% - 40px)
+
+        .image
+            height: 40vw
+            display: flex
+            padding: 0 4px
+
+            img
+                height: 40vw
+                width: auto
+
+        .action
+            position: absolute
+            z-index: 2
+            top: 50%
+            transform: translateY(-50%)
+            right: 40px
+            display: flex
+            align-items: center
+            justify-content: center
+            height: 48px
+            width: 48px
+            background-color: $main_color
+            cursor: pointer
+
+            .arrow
+                width: 24px
+                height: 24px
+
 @media (hover: hover)
     .wrapper
         .slider

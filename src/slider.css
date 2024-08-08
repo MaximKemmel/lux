@@ -7,6 +7,17 @@
 
 .slick-slide {
   transition: all 0.2s ease-out;
+  padding: 0;
+  margin: 0;
+  outline: none;
+}
+
+.slick-slide:focus {
+  outline: none;
+}
+
+.slick-slide div {
+  display: flex;
 }
 
 .slick-vertical .slick-slide {

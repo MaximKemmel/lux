@@ -217,9 +217,10 @@ $about_label_color: #00000066
                 position: relative
                 overflow: hidden
 
-                img
+                .image
                     width: 100%
                     height: auto
+                    min-height: 100%
 
                 .pagination
                     display: flex
@@ -265,9 +266,14 @@ $about_label_color: #00000066
                             opacity: 1
                             cursor: pointer
 
-                        img
+                        .arrow
                             width: 24px
-                            aspect-ratio: 1
+                            height: 24px
+
+        button
+            width: max-content
+            height: 50px
+            align-self: center
 
     .services
         margin: 50px 0

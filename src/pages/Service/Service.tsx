@@ -18,15 +18,20 @@ import RooftopSmallImage from "../../assets/images/rooftop_small.png";
 import MeetingSmallRoomImage from "../../assets/images/meeting_room_small.png";
 import SpaSmallImage from "../../assets/images/spa_small.png";
 import ArrowTopRightIcon from "../../assets/images/arrow_top_right.png";
+import GalleryImageOne from "../../assets/images/galery_1.png";
+import GalleryImageTwo from "../../assets/images/galery_2.png";
+import ArrowRightIcon from "../../assets/images/arrow_right.png";
 
 const ServicePage = () => {
   const { setSelectedService } = useActions();
   const selectedService = useTypedSelector((state) => state.mainReducer.selectedService);
   const slider = useRef(null as Slider);
+  const gallerySlider = useRef(null as Slider);
   const smallImages = [RooftopSmallImage, MeetingSmallRoomImage, SpaSmallImage];
 
   const settings = {
     infinite: false,
+    swipeToSlide: false,
     slidesToShow: 1,
     vertical: true,
     autoplay: false,
@@ -34,6 +39,16 @@ const ServicePage = () => {
     afterChange: (index) => {
       setSelectedService(index);
     },
+  };
+
+  const gallerySettings = {
+    className: "slider variable-width",
+    infinite: true,
+    swipeToSlide: false,
+    slidesToShow: 1,
+    variableWidth: true,
+    autoplay: false,
+    arrows: false,
   };
 
   useEffect(() => {
@@ -116,6 +131,19 @@ const ServicePage = () => {
         <div className={styles.description}>
           I likhet med de andre styrerommene, men med plass til 14 personer, er dette rommet oppkalt etter kunstneren Gerhard
           Munthe, hvis drømmende og tidsriktige illustrasjoner av norsk folklore inspirerte interiøret
+        </div>
+      </div>
+      <div className={`${styles.wrapper_container} ${styles.gallery}`}>
+        <Slider ref={gallerySlider} {...gallerySettings}>
+          <div className={styles.image}>
+            <img src={GalleryImageOne} alt="" />
+          </div>
+          <div className={styles.image}>
+            <img src={GalleryImageTwo} alt="" />
+          </div>
+        </Slider>
+        <div className={styles.action} onClick={() => gallerySlider?.current?.slickNext()}>
+          <img className={styles.arrow} src={ArrowRightIcon} alt="" />
         </div>
       </div>
     </div>

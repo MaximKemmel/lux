@@ -8,3 +8,7 @@
 .slick-slide {
   transition: all 0.2s ease-out;
 }
+
+.slick-vertical .slick-slide {
+  border: none;
+}

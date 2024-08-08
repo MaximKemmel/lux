@@ -1,9 +1,16 @@
 import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Slider from "react-slick";
+
+import { useActions } from "../../hooks/useActions";
 
 import globalStyles from "../../App.module.sass";
 import styles from "./Home.module.sass";
 import "../../slider.css";
+
+import { ServicesList } from "../../data/servicesList";
+import { IService } from "../../types/service";
+import { IServiceTag } from "../../types/serviceTag";
 
 import BackgroundVideo from "../../assets/video/home_background.mp4";
 import LandstadsIcon from "../../assets/images/landstads_gate.png";
@@ -22,6 +29,8 @@ import ArrowLeftIcon from "../../assets/images/arrow_left.png";
 import ArrowRightIcon from "../../assets/images/arrow_right.png";
 
 const HomePage = () => {
+  const navigate = useNavigate();
+  const { setSelectedService } = useActions();
   const [selectedTheme, setSelectedTheme] = useState(0);
   const [currentIndex, setCurrentIndex] = useState(0);
   const slider = useRef(null as Slider);
@@ -43,6 +52,11 @@ const HomePage = () => {
     document.title = "LUX";
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
+
+  const handleServiceOnClick = (id: number) => {
+    setSelectedService(id);
+    navigate("/service");
+  };
 
   return (
     <div className={styles.wrapper}>
@@ -317,71 +331,42 @@ const HomePage = () => {
           </div>
         </div>
       </div>
-      <div className={`${styles.wrapper_container} ${styles.complexes}`}>
+      <div className={`${styles.wrapper_container} ${styles.services}`}>
         <div className={styles.title}>
           The complex will soon include a restaurant, wine bar, spa, sky bar, event spaces, and a car care center. Our LUX
           P-Hus garage is operational, ideal for guests arriving by car
         </div>
-        <div className={styles.complexes_list}>
-          <div className={`${styles.complex} ${styles.small}`}>
-            <div className={styles.content}>
-              <div className={styles.main_info}>
-                <div className={styles.tags_list}>
-                  <div className={styles.tag}>Good spirits</div>
-                  <div className={styles.tag}>Alcohol 18+</div>
-                  <div className={styles.tag}>New people</div>
+        <div className={styles.services_list}>
+          {ServicesList.map((service: IService) => (
+            <div
+              className={`${styles.service} ${service.id == 0 ? styles.small : ""} ${service.id == 1 ? styles.medium : ""} ${
+                service.id == 2 ? styles.big : ""
+              }`}
+            >
+              <div className={styles.content}>
+                <div className={styles.main_info}>
+                  <div className={styles.tags_list}>
+                    {service.tags.map((serviceTag: IServiceTag) => (
+                      <div className={styles.tag}>{serviceTag.tag}</div>
+                    ))}
+                  </div>
+                  <div className={styles.name}>{service.name}</div>
                 </div>
-                <div className={styles.name}>Rooftop</div>
-              </div>
-              <div className={styles.actions}>
-                <button type="button" className={styles.book}>
-                  <div className={globalStyles.content}>Book sky bar</div>
-                </button>
-                <button type="button" className={`${globalStyles.blur} ${styles.more}`}>
-                  Read more
-                </button>
+                <div className={styles.actions}>
+                  <button type="button" className={styles.book}>
+                    <div className={globalStyles.content}>{`Book ${service.name.toLowerCase()}`}</div>
+                  </button>
+                  <button
+                    type="button"
+                    className={`${globalStyles.blur} ${styles.more}`}
+                    onClick={() => handleServiceOnClick(service.id)}
+                  >
+                    Read more
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
-          <div className={`${styles.complex} ${styles.medium}`}>
-            <div className={styles.content}>
-              <div className={styles.main_info}>
-                <div className={styles.tags_list}>
-                  <div className={styles.tag}>Business meetings</div>
-                  <div className={styles.tag}>Work</div>
-                </div>
-                <div className={styles.name}>Meeting room</div>
-              </div>
-              <div className={styles.actions}>
-                <button type="button" className={styles.book}>
-                  <div className={globalStyles.content}>Book meeting room</div>
-                </button>
-                <button type="button" className={`${globalStyles.blur} ${styles.more}`}>
-                  Read more
-                </button>
-              </div>
-            </div>
-          </div>
-          <div className={`${styles.complex} ${styles.big}`}>
-            <div className={styles.content}>
-              <div className={styles.main_info}>
-                <div className={styles.tags_list}>
-                  <div className={styles.tag}>Spa</div>
-                  <div className={styles.tag}>Yoga</div>
-                  <div className={styles.tag}>Massage</div>
-                </div>
-                <div className={styles.name}>Spa</div>
-              </div>
-              <div className={styles.actions}>
-                <button type="button" className={styles.book}>
-                  <div className={globalStyles.content}>Book spa</div>
-                </button>
-                <button type="button" className={`${globalStyles.blur} ${styles.more}`}>
-                  Read more
-                </button>
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </div>

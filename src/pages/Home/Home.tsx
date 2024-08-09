@@ -9,8 +9,10 @@ import styles from "./Home.module.sass";
 import "../../slider.css";
 
 import { ServicesList } from "../../data/servicesList";
+import { ApartamentsList } from "../../data/apartamentsList";
 import { IService } from "../../types/service";
 import { IServiceTag } from "../../types/serviceTag";
+import { IApartament } from "../../types/apartament";
 
 import BackgroundVideo from "../../assets/video/home_background.mp4";
 import LandstadsIcon from "../../assets/images/landstads_gate.png";
@@ -19,11 +21,6 @@ import ApartmentsIcon from "../../assets/images/themed_apartments.png";
 import SquareIcon from "../../assets/images/square.png";
 import CheckInIcon from "../../assets/images/check_in.png";
 import CheckOutIcon from "../../assets/images/check_out.png";
-import LeiraImage from "../../assets/images/leira.png";
-import LofotenImage from "../../assets/images/lofoten.png";
-import HardengerfjordImage from "../../assets/images/hardengerfjord.png";
-import ØstmarkaImage from "../../assets/images/Østmarka.png";
-import ØsterdalenImage from "../../assets/images/Østerdalen.png";
 import SliderImage from "../../assets/images/slider_image.jpg";
 import ArrowLeftIcon from "../../assets/images/arrow_left.png";
 import ArrowRightIcon from "../../assets/images/arrow_right.png";
@@ -31,7 +28,7 @@ import ArrowRightIcon from "../../assets/images/arrow_right.png";
 const HomePage = () => {
   const navigate = useNavigate();
   const { setSelectedService } = useActions();
-  const [selectedTheme, setSelectedTheme] = useState(0);
+  const [selectedApartament, setSelectedApartament] = useState(0);
   const [currentIndex, setCurrentIndex] = useState(0);
   const slider = useRef(null as Slider);
 
@@ -125,176 +122,42 @@ const HomePage = () => {
         </div>
         <div className={styles.themes_container}>
           <div className={styles.themes_list}>
-            <div
-              className={`${styles.theme} ${selectedTheme === 0 ? styles.active : ""}`}
-              onClick={() => setSelectedTheme(0)}
-            >
-              <div className={styles.info}>
-                <img src={LeiraImage} alt="" />
-                <div className={styles.content}>
-                  <div className={styles.name}>Leira</div>
-                  <div className={styles.description}>Studio</div>
-                </div>
-              </div>
-              <div className={styles.about}>
-                <div className={styles.column}>
-                  <div className={styles.item}>
-                    <div className={styles.label}>Hardengerfjord</div>
-                    <div className={styles.value}>Workplace</div>
-                  </div>
-                  <div className={styles.item}>
-                    <div className={styles.label}>Type</div>
-                    <div className={styles.value}>2 soverom</div>
+            {ApartamentsList.map((apartament: IApartament) => (
+              <div
+                className={`${styles.theme} ${selectedApartament === apartament.id ? styles.active : ""}`}
+                onClick={() => setSelectedApartament(apartament.id)}
+              >
+                <div className={styles.info}>
+                  <img src={apartament.icon} alt="" />
+                  <div className={styles.content}>
+                    <div className={styles.name}>{apartament.name}</div>
+                    <div className={styles.description}>{apartament.description}</div>
                   </div>
                 </div>
-                <div className={styles.column}>
-                  <div className={styles.item}>
-                    <div className={styles.label}>Hardengerfjord</div>
-                    <div className={styles.value}>180cm bed and bunk bed</div>
+                <div className={styles.about}>
+                  <div className={styles.column}>
+                    <div className={styles.item}>
+                      <div className={styles.label}>Hardengerfjord</div>
+                      <div className={styles.value}>Workplace</div>
+                    </div>
+                    <div className={styles.item}>
+                      <div className={styles.label}>Type</div>
+                      <div className={styles.value}>2 soverom</div>
+                    </div>
                   </div>
-                  <div className={styles.item}>
-                    <div className={styles.label}>Hardengerfjord</div>
-                    <div className={styles.value}>Balcony</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div
-              className={`${styles.theme} ${selectedTheme === 1 ? styles.active : ""}`}
-              onClick={() => setSelectedTheme(1)}
-            >
-              <div className={styles.info}>
-                <img src={LofotenImage} alt="" />
-                <div className={styles.content}>
-                  <div className={styles.name}>Lofoten</div>
-                  <div className={styles.description}>Studio with balcony</div>
-                </div>
-              </div>
-              <div className={styles.about}>
-                <div className={styles.column}>
-                  <div className={styles.item}>
-                    <div className={styles.label}>Hardengerfjord</div>
-                    <div className={styles.value}>Workplace</div>
-                  </div>
-                  <div className={styles.item}>
-                    <div className={styles.label}>Type</div>
-                    <div className={styles.value}>2 soverom</div>
-                  </div>
-                </div>
-                <div className={styles.column}>
-                  <div className={styles.item}>
-                    <div className={styles.label}>Hardengerfjord</div>
-                    <div className={styles.value}>180cm bed and bunk bed</div>
-                  </div>
-                  <div className={styles.item}>
-                    <div className={styles.label}>Hardengerfjord</div>
-                    <div className={styles.value}>Balcony</div>
+                  <div className={styles.column}>
+                    <div className={styles.item}>
+                      <div className={styles.label}>Hardengerfjord</div>
+                      <div className={styles.value}>180cm bed and bunk bed</div>
+                    </div>
+                    <div className={styles.item}>
+                      <div className={styles.label}>Hardengerfjord</div>
+                      <div className={styles.value}>Balcony</div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div
-              className={`${styles.theme} ${selectedTheme === 2 ? styles.active : ""}`}
-              onClick={() => setSelectedTheme(2)}
-            >
-              <div className={styles.info}>
-                <img src={HardengerfjordImage} alt="" />
-                <div className={styles.content}>
-                  <div className={styles.name}>Hardengerfjord</div>
-                  <div className={styles.description}>Apartment with balcony</div>
-                </div>
-              </div>
-              <div className={styles.about}>
-                <div className={styles.column}>
-                  <div className={styles.item}>
-                    <div className={styles.label}>Hardengerfjord</div>
-                    <div className={styles.value}>Workplace</div>
-                  </div>
-                  <div className={styles.item}>
-                    <div className={styles.label}>Type</div>
-                    <div className={styles.value}>2 soverom</div>
-                  </div>
-                </div>
-                <div className={styles.column}>
-                  <div className={styles.item}>
-                    <div className={styles.label}>Hardengerfjord</div>
-                    <div className={styles.value}>180cm bed and bunk bed</div>
-                  </div>
-                  <div className={styles.item}>
-                    <div className={styles.label}>Hardengerfjord</div>
-                    <div className={styles.value}>Balcony</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div
-              className={`${styles.theme} ${selectedTheme === 3 ? styles.active : ""}`}
-              onClick={() => setSelectedTheme(3)}
-            >
-              <div className={styles.info}>
-                <img src={ØstmarkaImage} alt="" />
-                <div className={styles.content}>
-                  <div className={styles.name}>Østmarka</div>
-                  <div className={styles.description}>Deluxe studio</div>
-                </div>
-              </div>
-              <div className={styles.about}>
-                <div className={styles.column}>
-                  <div className={styles.item}>
-                    <div className={styles.label}>Hardengerfjord</div>
-                    <div className={styles.value}>Workplace</div>
-                  </div>
-                  <div className={styles.item}>
-                    <div className={styles.label}>Type</div>
-                    <div className={styles.value}>2 soverom</div>
-                  </div>
-                </div>
-                <div className={styles.column}>
-                  <div className={styles.item}>
-                    <div className={styles.label}>Hardengerfjord</div>
-                    <div className={styles.value}>180cm bed and bunk bed</div>
-                  </div>
-                  <div className={styles.item}>
-                    <div className={styles.label}>Hardengerfjord</div>
-                    <div className={styles.value}>Balcony</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div
-              className={`${styles.theme} ${selectedTheme === 4 ? styles.active : ""}`}
-              onClick={() => setSelectedTheme(4)}
-            >
-              <div className={styles.info}>
-                <img src={ØsterdalenImage} alt="" />
-                <div className={styles.content}>
-                  <div className={styles.name}>Østerdalen</div>
-                  <div className={styles.description}>Deluxe apartment with balcony</div>
-                </div>
-              </div>
-              <div className={styles.about}>
-                <div className={styles.column}>
-                  <div className={styles.item}>
-                    <div className={styles.label}>Hardengerfjord</div>
-                    <div className={styles.value}>Workplace</div>
-                  </div>
-                  <div className={styles.item}>
-                    <div className={styles.label}>Type</div>
-                    <div className={styles.value}>2 soverom</div>
-                  </div>
-                </div>
-                <div className={styles.column}>
-                  <div className={styles.item}>
-                    <div className={styles.label}>Hardengerfjord</div>
-                    <div className={styles.value}>180cm bed and bunk bed</div>
-                  </div>
-                  <div className={styles.item}>
-                    <div className={styles.label}>Hardengerfjord</div>
-                    <div className={styles.value}>Balcony</div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
           <div className={styles.slider}>
             <Slider ref={slider} {...settings}>

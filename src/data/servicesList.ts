@@ -1,5 +1,5 @@
-import { IService } from "src/types/service";
-import { IServiceTag } from "src/types/serviceTag";
+import { IService } from "../types/service";
+import { IServiceTag } from "../types/serviceTag";
 
 export const ServicesList = [
   {

@@ -17,7 +17,7 @@ const Footer = () => {
     <footer>
       <div className={styles.container}>
         <div className={styles.main_info}>
-          <div className={styles.logo}>
+          <div className={styles.logo} onClick={() => navigate("/")}>
             <img src={Logo} alt="" />
           </div>
           <div className={styles.general}>
@@ -67,18 +67,18 @@ const Footer = () => {
         <div className={styles.socials}>
           <div className={styles.empty}></div>
           <div className={styles.socials_list}>
-            <div className={styles.social}>
+            <a className={styles.social} href="https://www.facebook.com/luxhotelnorway/" target="_blank">
               <img src={FacebookIcon} alt="" />
               Follow us
               <br />
               on facebook
-            </div>
-            <div className={styles.social}>
+            </a>
+            <a className={styles.social} href="https://www.instagram.com/luxhotelnorway/" target="_blank">
               <img src={InstagramIcon} alt="" />
               Follow us
               <br />
               on instagram
-            </div>
+            </a>
           </div>
         </div>
         <div className={styles.bottom}>

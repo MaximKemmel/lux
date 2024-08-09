@@ -32,12 +32,14 @@ $secondary_text_color: #000000
             display: flex
             gap: 18px
 
-            a
+            a,
+            .link
                 text-decoration: none
                 color: $link_color
                 font-family: "Inter", sans-serif
                 font-weight: 300
                 font-size: 16px
+                cursor: pointer
 
     .actions
         display: flex
@@ -106,7 +108,8 @@ $secondary_text_color: #000000
     &.dark
         .navigation
             .links
-                a
+                a,
+                .link
                     color: $secondary_text_color
 
         .actions

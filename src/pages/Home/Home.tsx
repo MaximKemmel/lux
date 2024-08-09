@@ -115,7 +115,7 @@ const HomePage = () => {
           </div>
         </div>
       </div>
-      <div className={`${styles.wrapper_container} ${styles.themes}`}>
+      <div className={`${styles.wrapper_container} ${styles.themes}`} id="apartament">
         <div className={styles.title}>
           Discover five different themes on each floor
           <div className={styles.description}>Apartaments from 33m² studios to 65m²</div>
@@ -193,11 +193,11 @@ const HomePage = () => {
             </div>
           </div>
         </div>
-        <button type="button" className={globalStyles.secondary} onClick={() => navigate("/apartaments")}>
+        <button type="button" className={globalStyles.secondary} onClick={() => navigate("/apartament")}>
           <div className={globalStyles.content}>Read about apartments</div>
         </button>
       </div>
-      <div className={`${styles.wrapper_container} ${styles.services}`}>
+      <div className={`${styles.wrapper_container} ${styles.services}`} id="service">
         <div className={styles.title}>
           The complex will soon include a restaurant, wine bar, spa, sky bar, event spaces, and a car care center. Our LUX
           P-Hus garage is operational, ideal for guests arriving by car

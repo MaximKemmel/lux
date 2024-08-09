@@ -19,6 +19,23 @@ const Header = () => {
     setIsLanguageSelectorActive(false);
   }, [selectedLanguage]);
 
+  const handleLinkOnClick = (link: string) => {
+    if (pathname === "/") {
+      var element = document.getElementById(link);
+      if (element !== null) {
+        element!.scrollIntoView({
+          behavior: "smooth",
+        });
+      }
+    } else {
+      if (pathname !== `/${link}`) {
+        navigate(`/${link}`);
+      } else {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    }
+  };
+
   return (
     <header>
       <div className={`${styles.container} ${pathname === "/terms" || pathname === "/privacy_policy" ? styles.dark : ""}`}>
@@ -27,8 +44,12 @@ const Header = () => {
             <img src={pathname === "/terms" || pathname === "/privacy_policy" ? BlackLogo : Logo} alt="" />
           </div>
           <nav className={styles.links}>
-            <Link to="">About apartment</Link>
-            <Link to="">Services</Link>
+            <div className={styles.link} onClick={() => handleLinkOnClick("apartament")}>
+              About apartament
+            </div>
+            <div className={styles.link} onClick={() => handleLinkOnClick("service")}>
+              Services
+            </div>
             <Link to="">Question–Answer</Link>
           </nav>
         </div>

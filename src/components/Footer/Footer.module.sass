@@ -62,7 +62,8 @@ $bottom_border_color: #EDEDED
                 flex-direction: column
                 gap: 8px
 
-            .items
+            .items,
+            .items_mobile
                 display: flex
                 flex-wrap: wrap
                 font-size: 32px
@@ -73,9 +74,17 @@ $bottom_border_color: #EDEDED
                     color: $text_color
                     transition: all .2s ease-out
 
+            .items_mobile
+                display: none
+
     .socials
         display: flex
 
+    .socials_mobile
+        display: none
+
+    .socials,
+    .socials_mobile
         .empty
             display: flex
             height: 5px
@@ -138,3 +147,119 @@ $bottom_border_color: #EDEDED
                     .item
                         &:hover
                             color: $item_hover_color
+
+@media (max-width: 1400px)
+    .container
+        .main_info
+            display: flex
+            flex-direction: column
+            justify-content: start
+            gap: 32px
+
+            .title
+                font-size: 16px
+
+            .logo
+                width: 100%
+
+                img
+                    height: 80px
+
+            .general
+                width: 100%
+
+                .items
+                    gap: 10px
+
+                    .item
+                        font-size: 44px
+
+                        img
+                            height: 42px
+
+            .themes_services
+                width: 100%
+
+        .socials
+            display: none
+
+        .socials_mobile
+            display: flex
+            width: 100%
+
+            .empty
+                width: 0
+
+            .socials_list
+                width: 100%
+                justify-content: center
+
+                .social
+                    height: 178px
+
+                    img
+                        height: 42px
+                        width: 42px
+
+        .bottom
+            .designer
+                width: 200px
+
+            .links
+                width: calc(100% - 220px)
+                gap: 25px
+
+@media (max-width: 600px)
+    .container
+        .main_info
+            .general
+                .items
+                    .item
+                        font-size: 34px
+
+                        img
+                            height: 32px
+
+            .themes_services
+                width: 100%
+
+                .items
+                    display: none
+
+                .items_mobile
+                    display: flex
+                    flex-direction: column
+                    gap: 4px
+
+                    .item
+                        font-size: 32px
+                        line-height: 32px
+
+        .socials_mobile
+            .socials_list
+                .social
+                    height: 168px
+                    gap: 8px
+                    font-size: 14px
+
+                    img
+                        height: 32px
+                        width: 32px
+
+        .bottom
+            flex-direction: column
+            gap: 16px
+
+            .designer
+                width: 100%
+
+                img
+                    width: 133px
+
+            .links
+                width: 100%
+                flex-direction: column
+                gap: 16px
+
+                .link
+                    font-size: 14px

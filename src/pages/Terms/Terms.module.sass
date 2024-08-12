@@ -94,3 +94,94 @@ $term_border_color: #E9E9EB
                         margin-bottom: 8px
                         height: 50px
                         width: max-content
+
+@media (max-width: 1000px)
+    .wrapper
+        padding-top: 50px
+
+        .content
+            gap: 32px
+            width: calc(100% - 64px)
+            padding: 62px 32px
+
+            .title
+                font-size: 72px
+                line-height: 72px
+
+            .terms_list
+                .term
+                    display: flex
+                    flex-direction: column
+                    gap: 32px
+                    padding: 20px 0
+
+                    .theme
+                        width: 100%
+                        font-size: 18px
+                        line-height: 18px
+
+                        .point
+                            font-size: 17px
+
+                    .description
+                        gap: 22px
+
+                        .title
+                            font-size: 50px
+                            line-height: 50px
+
+                        .subtitle_empty
+                            margin-top: -9px
+
+                        .items_list
+                            display: flex
+                            flex-direction: column
+                            gap: 14px
+                            margin-top: -9px
+
+                            .item
+                                font-size: 15px
+                                line-height: 19px
+
+                        .thanks
+                            font-size: 24px
+                            line-height: 24px
+
+                        button
+                            margin-top: 0
+
+@media (max-width: 600px)
+    .wrapper
+        .content
+            gap: 32px
+            width: calc(100% - 32px)
+            padding: 50px 16px
+            padding-bottom: 0px
+
+            .title
+                font-size: 44px
+                line-height: 44px
+
+            .terms_list
+                .term
+                    gap: 16px
+
+                    .theme
+                        font-size: 16px
+
+                    .description
+                        gap: 22px
+
+                        .title
+                            font-size: 32px
+                            line-height: 32px
+
+                        .items_list
+                            .item
+                                font-size: 14px
+                                line-height: 17px
+
+                        .thanks
+                            margin-top: 8px
+                            font-size: 18px
+                            line-height: 18px

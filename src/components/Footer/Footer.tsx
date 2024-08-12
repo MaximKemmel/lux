@@ -1,6 +1,13 @@
 import { useNavigate } from "react-router-dom";
 
+import { useActions } from "../../hooks/useActions";
+
 import styles from "./Footer.module.sass";
+
+import { ServicesList } from "../../data/servicesList";
+import { IService } from "../../types/service";
+import { ApartamentsList } from "../../data/apartamentsList";
+import { IApartament } from "../../types/apartament";
 
 import Logo from "../../assets/images/footer_logo.png";
 import EmailIcon from "../../assets/images/email.png";
@@ -12,6 +19,17 @@ import DesignerIcon from "../../assets/images/designer.png";
 
 const Footer = () => {
   const navigate = useNavigate();
+  const { setSelectedService, setSelectedApartament } = useActions();
+
+  const handleServiceOnClick = (id: number) => {
+    setSelectedService(id);
+    navigate("/service");
+  };
+
+  const handleApartamentOnClick = (id: number) => {
+    setSelectedApartament(id);
+    navigate("/apartament");
+  };
 
   return (
     <footer>
@@ -37,29 +55,62 @@ const Footer = () => {
               </div>
             </div>
           </div>
+          <div className={styles.socials_mobile}>
+            <div className={styles.empty}></div>
+            <div className={styles.socials_list}>
+              <a className={styles.social} href="https://www.facebook.com/luxhotelnorway/" target="_blank">
+                <img src={FacebookIcon} alt="" />
+                Follow us
+                <br />
+                on facebook
+              </a>
+              <a className={styles.social} href="https://www.instagram.com/luxhotelnorway/" target="_blank">
+                <img src={InstagramIcon} alt="" />
+                Follow us
+                <br />
+                on instagram
+              </a>
+            </div>
+          </div>
           <div className={styles.themes_services}>
             <div className={styles.themes}>
               <div className={styles.title}>Apartments themes</div>
               <div className={styles.items}>
-                <div className={styles.item}>Leira</div>
-                {", "}
-                <div className={styles.item}>Lofoten</div>
-                {", "}
-                <div className={styles.item}>Østmarka</div>
-                {", "}
-                <div className={styles.item}>Hardengerfjord</div>
-                {", "}
-                <div className={styles.item}>Østerdalen</div>
+                {ApartamentsList.map((apartament: IApartament, index: number) => (
+                  <>
+                    {index > 0 ? ", " : null}
+                    <div className={styles.item} onClick={() => handleApartamentOnClick(apartament.id)}>
+                      {apartament.name}
+                    </div>
+                  </>
+                ))}
+              </div>
+              <div className={styles.items_mobile}>
+                {ApartamentsList.map((apartament: IApartament) => (
+                  <div className={styles.item} onClick={() => handleApartamentOnClick(apartament.id)}>
+                    {apartament.name}
+                  </div>
+                ))}
               </div>
             </div>
-            <div className={styles.services}>
+            <div className={styles.themes}>
               <div className={styles.title}>Services</div>
               <div className={styles.items}>
-                <div className={styles.item}>Sky bar</div>
-                {", "}
-                <div className={styles.item}>Spa</div>
-                {", "}
-                <div className={styles.item}>Meeting room</div>
+                {ServicesList.map((service: IService, index: number) => (
+                  <>
+                    {index > 0 ? ", " : null}
+                    <div className={styles.item} onClick={() => handleServiceOnClick(service.id)}>
+                      {service.name}
+                    </div>
+                  </>
+                ))}
+              </div>
+              <div className={styles.items_mobile}>
+                {ServicesList.map((service: IService) => (
+                  <div className={styles.item} onClick={() => handleServiceOnClick(service.id)}>
+                    {service.name}
+                  </div>
+                ))}
               </div>
             </div>
           </div>

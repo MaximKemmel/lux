@@ -1,5 +1,8 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import Slider from "react-slick";
+
+import { useActions } from "../../hooks/useActions";
+import { useTypedSelector } from "../../hooks/useTypedSeletor";
 
 import globalStyles from "../../App.module.sass";
 import styles from "./Apartaments.module.sass";
@@ -15,7 +18,8 @@ import ArrowRightIcon from "../../assets/images/arrow_right.png";
 import CheckIcon from "../../assets/images/check.png";
 
 const ApartamentsPage = () => {
-  const [selectedApartament, setSelectedApartament] = useState(0);
+  const { setSelectedApartament } = useActions();
+  const selectedApartament = useTypedSelector((state) => state.mainReducer.selectedApartament);
   const slider = useRef(null as Slider);
   const gallerySlider = useRef(null as Slider);
 

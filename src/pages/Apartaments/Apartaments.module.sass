@@ -37,79 +37,73 @@ $line_color: #EDEDED
             left: 40px
             bottom: 40px
             display: flex
-            flex-direction: column
-            gap: 32px
+            align-items: end
+            justify-content: space-between
+            width: calc(100% - 80px)
 
             .name
                 font-size: 108px
                 line-height: 91px
                 color: $main_color
 
-            button
-                height: 50px
-                width: 200px
-
-        .apartaments_list
-            position: absolute
-            z-index: 2
-            right: 40px
-            bottom: 40px
-            display: flex
-            flex-direction: column
-            gap: 8px
-
-            .apartament
+            .apartaments_list
                 display: flex
-                align-items: center
-                gap: 16px
-                width: 484px
-                height: 110px
-                border-radius: 110px
-                padding: 8px
-                cursor: pointer
-                transition: all .2s ease-out
-                border: 2px solid transparent
+                flex-direction: column
+                gap: 8px
 
-                &.active
-                    background-color: rgba(191, 191, 191, 0.15)
-                    backdrop-filter: blur(47px)
-                    -webkit-backdrop-filter: blur(47px)
+                .apartament
+                    display: flex
+                    align-items: center
+                    gap: 16px
+                    width: 484px
+                    height: 110px
+                    border-radius: 110px
+                    padding: 8px
+                    cursor: pointer
+                    transition: all .2s ease-out
+                    border: 2px solid transparent
+
+                    &.active
+                        background-color: rgba(191, 191, 191, 0.15)
+                        backdrop-filter: blur(47px)
+                        -webkit-backdrop-filter: blur(47px)
+
+                        .info
+                            .name
+                                opacity: 1
+
+                                img
+                                    opacity: .4
+
+                    img
+                        height: 110px
+                        aspect-ratio: 1
 
                     .info
-                        .name
-                            opacity: 1
-
-                            img
-                                opacity: .4
-
-                img
-                    height: 110px
-                    aspect-ratio: 1
-
-                .info
-                    display: flex
-                    flex-direction: column
-
-                    .name
                         display: flex
-                        gap: 6px
-                        font-size: 32px
-                        line-height: 42px
-                        color: $main_color
-                        opacity: .4
-                        transition: all .2s ease-out
+                        flex-direction: column
 
-                        img
-                            height: 20px
-                            aspect-ratio: 1
-                            opacity: 1
+                        .name
+                            display: flex
+                            gap: 6px
+                            font-size: 32px
+                            line-height: 42px
+                            color: $main_color
+                            opacity: .4
                             transition: all .2s ease-out
 
-                    .description
-                        font-size: 16px
-                        line-height: 20px
-                        color: $main_color
-                        opacity: .4
+                            img
+                                height: 20px
+                                aspect-ratio: 1
+                                opacity: 1
+                                transition: all .2s ease-out
+
+                        .description
+                            font-size: 16px
+                            line-height: 20px
+                            color: $main_color
+                            opacity: .4
+
     .wrapper_container
         padding: 0 40px
         width: calc(100% - 80px)
@@ -142,8 +136,7 @@ $line_color: #EDEDED
             .line
                 height: 1px
                 align-self: center
-                margin-top: 5px
-                margin-bottom: 5px
+                margin: 5px 40px
                 width: calc(100vw - 80px)
                 background-color: $line_color
 
@@ -252,14 +245,211 @@ $line_color: #EDEDED
 @media (hover: hover)
     .wrapper
         .slider
-            .apartaments_list
-                .apartament
-                    &:hover
-                        border: 2px solid $apartament_border_color
+            .content
+                .apartaments_list
+                    .apartament
+                        &:hover
+                            border: 2px solid $apartament_border_color
+
+                            .info
+                                .name
+                                    opacity: 1
+
+                                    img
+                                        opacity: 1
+
+@media (max-width: 1000px)
+    .wrapper
+        gap: 40px
+
+        .slider
+            .content
+                left: 32px
+                bottom: 32px
+                flex-direction: column-reverse
+                align-items: start
+                gap: 32px
+
+                .name
+                    font-size: 85px
+                    line-height: 67px
+
+                .apartaments_list
+                    gap: 0
+
+                    .apartament
+                        gap: 12px
+                        width: 350px
+                        height: 95px
+
+                        img
+                            height: 95px
 
                         .info
                             .name
-                                opacity: 1
+                                font-size: 28px
+                                line-height: 36px
 
                                 img
-                                    opacity: 1
+                                    height: 18px
+
+                            .description
+                                font-size: 16px
+
+        .wrapper_container
+            padding: 0 32px
+            width: calc(100% - 64px)
+
+        .features
+            gap: 50px
+
+            .main_info
+                gap: 32px
+
+                .title_container
+                    gap: 16px
+
+                    .title
+                        font-size: 55px
+                        line-height: 55px
+
+                .line
+                    margin: 5px 32px
+                    width: calc(100vw - 64px)
+
+                .features_list
+                    flex-wrap: wrap
+                    gap: 24px
+
+                    .feature
+                        width: calc(50% - 12px)
+
+            .schema
+                width: 80vw
+
+            .more_container
+                flex-direction: column
+                justify-content: start
+                gap: 24px
+
+                .more_list
+                    gap: 20px
+                    width: 100%
+
+        .gallery
+            margin: 40px 0
+            height: 50vw
+            width: calc(100% - 32px)
+
+            .image
+                height: 50vw
+
+                img
+                    height: 50vw
+
+            .action
+                right: 40px
+                height: 44px
+                width: 44px
+
+                .arrow
+                    width: 22px
+                    height: 22px
+
+        .book
+            width: calc(100% - 64px)
+            margin-bottom: 50px
+
+@media (max-width: 600px)
+    .wrapper
+        gap: 24px
+
+        .slider
+            .content
+                left: 16px
+                bottom: 16px
+                gap: 24px
+
+                .name
+                    font-size: 67px
+                    line-height: 56px
+
+                .apartaments_list
+                    .apartament
+                        width: 250px
+                        height: 85px
+
+                        img
+                            height: 85px
+
+                        .info
+                            .name
+                                font-size: 24px
+                                line-height: 31px
+
+                                img
+                                    height: 16px
+
+                            .description
+                                font-size: 14px
+
+        .wrapper_container
+            padding: 0 16px
+            width: calc(100% - 32px)
+
+        .features
+            gap: 40px
+
+            .main_info
+                gap: 24px
+
+                .title_container
+                    gap: 14px
+
+                    .title
+                        font-size: 44px
+                        line-height: 44px
+
+                    .description
+                        font-size: 14px
+                        line-height: 19px
+
+                .line
+                    margin: 5px 16px
+                    width: calc(100vw - 32px)
+
+                .features_list
+                    .feature
+                        width: 100%
+
+            .schema
+                width: 90vw
+
+            .more_container
+                .more_list
+                    gap: 16px
+                    width: 100%
+
+        .gallery
+            margin: 32px 0
+            height: 55vw
+            width: calc(100% - 16px)
+
+            .image
+                height: 55vw
+
+                img
+                    height: 55vw
+
+            .action
+                right: 24px
+                height: 42px
+                width: 42px
+
+                .arrow
+                    width: 20px
+                    height: 20px
+
+        .book
+            width: calc(100% - 32px)
+            margin-bottom: 40px

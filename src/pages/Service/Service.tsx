@@ -125,7 +125,7 @@ const ServicePage = () => {
           </div>
         </div>
       </div>
-      <div className={`${styles.wrapper_container} ${styles.line}`} />
+      <div className={styles.line} />
       <div className={`${styles.wrapper_container} ${styles.about}`}>
         <div className={styles.title}>
           LUX Hotels presenterer det første og største taket med møterom og bar i Lillestrøm

@@ -71,23 +71,23 @@ const ApartamentsPage = () => {
           <div className={styles.name}>
             {ApartamentsList.find((apartamentItem: IApartament) => apartamentItem.id === selectedApartament)!.name}
           </div>
-        </div>
-        <div className={styles.apartaments_list}>
-          {ApartamentsList.map((apartament: IApartament) => (
-            <div
-              className={`${styles.apartament} ${selectedApartament === apartament.id ? styles.active : ""}`}
-              onClick={() => setSelectedApartament(apartament.id)}
-            >
-              <img src={apartament.icon} alt="" />
-              <div className={styles.info}>
-                <div className={styles.name}>
-                  {apartament.name}
-                  <img src={ArrowTopRightIcon} alt="" />
+          <div className={styles.apartaments_list}>
+            {ApartamentsList.map((apartament: IApartament) => (
+              <div
+                className={`${styles.apartament} ${selectedApartament === apartament.id ? styles.active : ""}`}
+                onClick={() => setSelectedApartament(apartament.id)}
+              >
+                <img src={apartament.icon} alt="" />
+                <div className={styles.info}>
+                  <div className={styles.name}>
+                    {apartament.name}
+                    <img src={ArrowTopRightIcon} alt="" />
+                  </div>
+                  <div className={styles.description}>{apartament.description}</div>
                 </div>
-                <div className={styles.description}>{apartament.description}</div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
       <div className={`${styles.wrapper_container} ${styles.features}`}>

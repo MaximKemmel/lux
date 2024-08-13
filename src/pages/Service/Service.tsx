@@ -80,31 +80,33 @@ const ServicePage = () => {
           </div>
         </Slider>
         <div className={styles.content}>
-          <div className={styles.name}>
-            {ServicesList.find((serviceItem: IService) => serviceItem.id === selectedService)!.name}
-          </div>
-          <button type="button" className={styles.book}>
-            <div className={globalStyles.content}>{`Book ${ServicesList.find(
-              (serviceItem: IService) => serviceItem.id === selectedService
-            )!.name.toLowerCase()}`}</div>
-          </button>
-        </div>
-        <div className={styles.services_list}>
-          {ServicesList.map((service: IService, index: number) => (
-            <div
-              className={`${styles.service} ${selectedService === service.id ? styles.active : ""}`}
-              onClick={() => setSelectedService(service.id)}
-            >
-              <img src={smallImages[index]} alt="" />
-              <div className={styles.info}>
-                <div className={styles.name}>
-                  {service.name}
-                  <img src={ArrowTopRightIcon} alt="" />
-                </div>
-                <div className={styles.price}>{`Orders from $${service.min_price}`}</div>
-              </div>
+          <div className={styles.main}>
+            <div className={styles.name}>
+              {ServicesList.find((serviceItem: IService) => serviceItem.id === selectedService)!.name}
             </div>
-          ))}
+            <button type="button" className={styles.book}>
+              <div className={globalStyles.content}>{`Book ${ServicesList.find(
+                (serviceItem: IService) => serviceItem.id === selectedService
+              )!.name.toLowerCase()}`}</div>
+            </button>
+          </div>
+          <div className={styles.services_list}>
+            {ServicesList.map((service: IService, index: number) => (
+              <div
+                className={`${styles.service} ${selectedService === service.id ? styles.active : ""}`}
+                onClick={() => setSelectedService(service.id)}
+              >
+                <img src={smallImages[index]} alt="" />
+                <div className={styles.info}>
+                  <div className={styles.name}>
+                    {service.name}
+                    <img src={ArrowTopRightIcon} alt="" />
+                  </div>
+                  <div className={styles.price}>{`Orders from $${service.min_price}`}</div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
       <div className={`${styles.wrapper_container} ${styles.main_info}`}>

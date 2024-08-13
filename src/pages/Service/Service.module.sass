@@ -37,79 +37,81 @@ $line_color: #EDEDED
             left: 40px
             bottom: 40px
             display: flex
-            flex-direction: column
-            gap: 32px
+            align-items: end
+            justify-content: space-between
+            width: calc(100% - 80px)
 
-            .name
-                font-size: 108px
-                line-height: 91px
-                color: $main_color
-
-            button
-                height: 50px
-                width: 200px
-
-        .services_list
-            position: absolute
-            z-index: 2
-            right: 40px
-            bottom: 40px
-            display: flex
-            flex-direction: column
-            gap: 8px
-
-            .service
+            .main
                 display: flex
-                align-items: center
-                gap: 16px
-                width: 484px
-                height: 110px
-                border-radius: 110px
-                padding: 8px
-                cursor: pointer
-                transition: all .2s ease-out
-                border: 2px solid transparent
+                flex-direction: column
+                gap: 32px
 
-                &.active
-                    background-color: rgba(191, 191, 191, 0.15)
-                    backdrop-filter: blur(47px)
-                    -webkit-backdrop-filter: blur(47px)
+                .name
+                    font-size: 108px
+                    line-height: 91px
+                    color: $main_color
+
+                button
+                    height: 50px
+                    width: 200px
+
+            .services_list
+                display: flex
+                flex-direction: column
+                gap: 8px
+
+                .service
+                    display: flex
+                    align-items: center
+                    gap: 16px
+                    width: 484px
+                    height: 110px
+                    border-radius: 110px
+                    padding: 8px
+                    cursor: pointer
+                    transition: all .2s ease-out
+                    border: 2px solid transparent
+
+                    &.active
+                        background-color: rgba(191, 191, 191, 0.15)
+                        backdrop-filter: blur(47px)
+                        -webkit-backdrop-filter: blur(47px)
+
+                        .info
+                            .name
+                                opacity: 1
+
+                                img
+                                    opacity: .4
+
+                    img
+                        height: 110px
+                        aspect-ratio: 1
 
                     .info
-                        .name
-                            opacity: 1
-
-                            img
-                                opacity: .4
-
-                img
-                    height: 110px
-                    aspect-ratio: 1
-
-                .info
-                    display: flex
-                    flex-direction: column
-
-                    .name
                         display: flex
-                        gap: 6px
-                        font-size: 32px
-                        line-height: 42px
-                        color: $main_color
-                        opacity: .4
-                        transition: all .2s ease-out
+                        flex-direction: column
 
-                        img
-                            height: 20px
-                            aspect-ratio: 1
-                            opacity: 1
+                        .name
+                            display: flex
+                            gap: 6px
+                            font-size: 32px
+                            line-height: 42px
+                            color: $main_color
+                            opacity: .4
                             transition: all .2s ease-out
 
-                    .price
-                        font-size: 16px
-                        line-height: 20px
-                        color: $main_color
-                        opacity: .4
+                            img
+                                height: 20px
+                                aspect-ratio: 1
+                                opacity: 1
+                                transition: all .2s ease-out
+
+                        .price
+                            font-size: 16px
+                            line-height: 20px
+                            color: $main_color
+                            opacity: .4
 
     .wrapper_container
         padding: 0 40px
@@ -224,14 +226,90 @@ $line_color: #EDEDED
 @media (hover: hover)
     .wrapper
         .slider
-            .services_list
-                .service
-                    &:hover
-                        border: 2px solid $service_border_color
+            .content
+                .services_list
+                    .service
+                        &:hover
+                            border: 2px solid $service_border_color
+
+                            .info
+                                .name
+                                    opacity: 1
+
+                                    img
+                                        opacity: 1
+
+@media (max-width: 1000px)
+    .wrapper
+        gap: 40px
+
+        .slider
+            .content
+                left: 32px
+                bottom: 32px
+                flex-direction: column-reverse
+                align-items: start
+                gap: 32px
+
+                .main
+                    .name
+                        font-size: 85px
+                        line-height: 67px
+
+                .services_list
+                    gap: 0
+
+                    .service
+                        gap: 12px
+                        width: 350px
+                        height: 95px
+
+                        img
+                            height: 95px
 
                         .info
                             .name
-                                opacity: 1
+                                font-size: 28px
+                                line-height: 36px
 
                                 img
-                                    opacity: 1
+                                    height: 18px
+
+                            .price
+                                font-size: 16px
+
+@media (max-width: 600px)
+    .wrapper
+        gap: 32px
+
+        .slider
+            .content
+                left: 16px
+                bottom: 16px
+                gap: 24px
+
+                .main
+                    gap: 24px
+
+                    .name
+                        font-size: 67px
+                        line-height: 56px
+
+                .services_list
+                    .service
+                        width: 250px
+                        height: 85px
+
+                        img
+                            height: 85px
+
+                        .info
+                            .name
+                                font-size: 24px
+                                line-height: 31px
+
+                                img
+                                    height: 16px
+
+                            .price
+                                font-size: 14px

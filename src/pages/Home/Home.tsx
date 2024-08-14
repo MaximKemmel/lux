@@ -31,6 +31,7 @@ const HomePage = () => {
   const [selectedApartament, setSelectedApartament] = useState(0);
   const [currentIndex, setCurrentIndex] = useState(0);
   const slider = useRef(null as Slider);
+  const themesSlider = useRef(null as Slider);
 
   const settings = {
     className: "center",
@@ -43,6 +44,16 @@ const HomePage = () => {
     afterChange: (index) => {
       setCurrentIndex(index);
     },
+  };
+
+  const themesSliderSettings = {
+    className: "slider variable-width",
+    infinite: false,
+    swipeToSlide: false,
+    slidesToShow: 1,
+    variableWidth: true,
+    autoplay: false,
+    arrows: false,
   };
 
   useEffect(() => {
@@ -119,6 +130,13 @@ const HomePage = () => {
         <div className={styles.title}>
           Discover five different themes on each floor
           <div className={styles.description}>Apartaments from 33m² studios to 65m²</div>
+          <button
+            type="button"
+            className={`${globalStyles.secondary} ${styles.button_mobile}`}
+            onClick={() => navigate("/apartament")}
+          >
+            <div className={globalStyles.content}>Read about apartments</div>
+          </button>
         </div>
         <div className={styles.themes_container}>
           <div className={styles.themes_list}>
@@ -159,12 +177,34 @@ const HomePage = () => {
               </div>
             ))}
           </div>
+          <div className={styles.themes_slider}>
+            <Slider ref={themesSlider} {...themesSliderSettings}>
+              {ApartamentsList.map((apartament: IApartament) => (
+                <div className={styles.theme_item}>
+                  <div
+                    className={`${styles.theme} ${selectedApartament === apartament.id ? styles.active : ""}`}
+                    onClick={() => setSelectedApartament(apartament.id)}
+                  >
+                    <div className={styles.info}>
+                      <img src={apartament.icon} alt="" />
+                      <div className={styles.content}>
+                        <div className={styles.name}>{apartament.name}</div>
+                        <div className={styles.description}>{apartament.description}</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </Slider>
+          </div>
           <div className={styles.slider}>
             <Slider ref={slider} {...settings}>
               {Array(6)
                 .fill(1)
                 .map(() => (
-                  <img className={styles.image} src={SliderImage} alt="" />
+                  <div className={styles.image}>
+                    <img src={SliderImage} alt="" />
+                  </div>
                 ))}
             </Slider>
             <div className={styles.actions}>
@@ -219,6 +259,9 @@ const HomePage = () => {
                   <div className={styles.name}>{service.name}</div>
                 </div>
                 <div className={styles.actions}>
+                  <button type="button" className={styles.book_mobile}>
+                    <div className={globalStyles.content}>Book</div>
+                  </button>
                   <button type="button" className={styles.book}>
                     <div className={globalStyles.content}>{`Book ${service.name.toLowerCase()}`}</div>
                   </button>

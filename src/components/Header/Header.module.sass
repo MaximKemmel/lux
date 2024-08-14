@@ -5,6 +5,7 @@ $selector_hover_color: #FFFFFF4D
 $language_color: #BBA78A
 $language_hover_color: #DCDDDE
 $secondary_text_color: #000000
+$menu_button_color: #F5F6F7
 
 .container
     display: flex
@@ -48,6 +49,10 @@ $secondary_text_color: #000000
 
         button
             height: 39px
+
+        .menu_button
+            display: none
+            background-color: $text_color
 
         .language_selector
             position: relative
@@ -113,6 +118,9 @@ $secondary_text_color: #000000
                     color: $secondary_text_color
 
         .actions
+            .menu_button
+                background-color: $menu_button_color
+
             .language_selector
                 color: $secondary_text_color
 
@@ -131,3 +139,33 @@ $secondary_text_color: #000000
 
                             &.active
                                 background-color: $language_color
+
+@media (max-width: 1000px)
+    .container
+        padding: 0 32px
+
+@media (max-width: 800px)
+    .container
+        .navigation
+            .links
+                display: none
+
+        .actions
+            button
+                height: 50px
+
+            .menu_button
+                display: flex
+                align-items: center
+                justify-content: center
+                height: 48px
+                width: 48px
+                background-color: $text_color
+
+                img
+                    height: 22px
+                    aspect-ratio: 1
+
+@media (max-width: 600px)
+    .container
+        padding: 0 16px

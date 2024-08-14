@@ -8,10 +8,13 @@ import Logo from "../../assets/images/logo.png";
 import BlackLogo from "../../assets/images/footer_logo.png";
 import EngIcon from "../../assets/images/eng.png";
 import NorIcon from "../../assets/images/nor.png";
+import MenuIcon from "../../assets/images/menu.png";
+import CloseIcon from "../../assets/images/close.png";
 
 const Header = () => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
+  const [isNavActive, setIsNavActive] = useState(false);
   const [isLanguageSelectorActive, setIsLanguageSelectorActive] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState("En");
 
@@ -85,6 +88,9 @@ const Header = () => {
           >
             <div className={globalStyles.content}>Book</div>
           </button>
+          <div className={styles.menu_button} onClick={() => setIsNavActive(!isNavActive)}>
+            <img src={isNavActive ? CloseIcon : MenuIcon} alt="" />
+          </div>
         </div>
       </div>
     </header>
